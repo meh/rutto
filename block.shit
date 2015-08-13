@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "*filter" > /jffs/rules.tmp
+/jffs/block.sh /jffs/microshit.ips >> /jffs/rules.tmp
+echo "COMMIT" >> /jffs/rules.tmp
+
+iptables-restore --noflush /jffs/rules.tmp
+rm -f /jffs/rules.tmp
